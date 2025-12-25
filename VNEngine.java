@@ -4,9 +4,15 @@ import java.util.Map;
 public class VNEngine {
 	private Map<String, Node> nodes;
 	private String currentNodeId;
+	private GameState gameState;
 
 	public VNEngine() {
+		gameState = new GameState();
 		nodes = new HashMap<>();
+	}
+
+	public GameState getGameState() {
+		return gameState;
 	}
 
 	public void addNode(Node node) {
