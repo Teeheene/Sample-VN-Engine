@@ -1,28 +1,45 @@
-import java.util.Queue;
 import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Scanner;
 
-class NodeDialogue extends Node {
-	Queue<String> lines;
-	String nextNodeId;
+public class NodeDialogue extends Node {
+    private Queue<Line> lines;
+    private String backgroundPath;
+    private String musicPath;
+    private String nextNode;
 
-	public NodeDialogue(String id, Queue<String> lines, String nextNodeId) {
+    public NodeDialogue() {}
+
+    public NodeDialogue(String id, Queue<Line> lines, String nextNode) {
 		this.id = id;
-		this.lines = new ArrayDeque<>(lines); 
-		this.nextNodeId = nextNodeId;
-	}	
+        this.lines = lines;
+        this.nextNode = nextNode;
+    }
 
-	@Override
-	void enter(VNEngine engine) {
-		Scanner scanner = new Scanner(System.in);
+    public void setBackgroundPath(String backgroundPath) { this.backgroundPath = backgroundPath; }
+    public void setMusicPath(String musicPath) { this.musicPath = musicPath; }
 
-		//copies lines for node reusability
-		Queue<String> dialogue = new ArrayDeque<>(lines);
-		while(!dialogue.isEmpty()) {
-			System.out.println("\n" + dialogue.poll() + " ");
-			scanner.nextLine();
-		}
-		engine.goTo(nextNodeId);
-	}
+    public Queue<Line> getLines() { return lines; }
+    public String getBackgroundPath() { return backgroundPath; }
+    public String getMusicPath() { return musicPath; }
+    public String getNextNode() { return nextNode; }
+
+    @Override
+    public void enter(VNEngine engine) {
+        Queue<Line> dialogue = new ArrayDeque<>(lines);
+        Scanner scanner = new Scanner(System.in);
+
+        while (!dialogue.isEmpty()) {
+            Line line = dialogue.poll();
+            System.out.println("\n" + line.getText());
+
+            for (CharacterState c : line.getCharacters()) {
+                System.out.println(c.toString());
+            }
+
+            scanner.nextLine();
+        }
+        engine.goTo(nextNode);
+    }
 }
 

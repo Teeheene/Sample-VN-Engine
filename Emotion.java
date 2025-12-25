@@ -1,0 +1,4 @@
+public enum Emotion {
+    HAPPY, SAD, ANGRY, NEUTRAL, FLUSTERED, BLUSHING, SCARED
+}
+

@@ -1,19 +1,19 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class VNEngine {
-	Map<String, Node> nodes;
-	String currentNodeId;
+public class VNEngine {
+	private Map<String, Node> nodes;
+	private String currentNodeId;
 
-	VNEngine() {
+	public VNEngine() {
 		nodes = new HashMap<>();
 	}
 
-	void addNode(Node node) {
+	public void addNode(Node node) {
 		nodes.put(node.id, node);
 	}
 
-	void goTo(String id) {
+	public void goTo(String id) {
 		Node node = nodes.get(id);
 		if(node == null) {
 			//System.out.println("Node not found: " + id + "\n");	
@@ -25,7 +25,7 @@ class VNEngine {
 		node.enter(this);
 	}
 
-	String getCurrentNodeId() {
+	public String getCurrentNodeId() {
 		return currentNodeId;
 	}
 }
