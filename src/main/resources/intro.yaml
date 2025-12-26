@@ -1,0 +1,22 @@
+id: intro
+type: dialogue
+next: morning
+
+background: bg_bedroom
+music: morning_theme
+
+lines:
+  - "Light bleeds through your eyelids before you’re ready for it."
+
+  - "Your body feels heavy, like you slept for days instead of hours."
+
+  - "The ceiling above you is unfamiliar — too clean, too quiet."
+
+  - "For a moment, panic rises… then fades."
+
+  - text: "You’re finally awake."
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: NEUTRAL
+

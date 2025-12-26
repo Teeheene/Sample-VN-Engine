@@ -1,0 +1,23 @@
+id: conversation
+type: dialogue
+next: first_choice
+
+lines:
+  - "Her words linger longer than they should."
+
+  - "Collapsed? You don’t remember that."
+
+  - "Actually… you don’t remember much at all."
+
+  - text: "Do you remember what happened?"
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: CURIOUS
+
+  - text: "Anything before last night?"
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: CURIOUS
+

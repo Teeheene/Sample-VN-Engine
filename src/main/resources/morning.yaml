@@ -1,0 +1,23 @@
+id: morning
+type: dialogue
+next: conversation
+
+lines:
+  - "You sit up slowly, the room spinning just a little."
+
+  - "There’s a faint smell of coffee somewhere outside."
+
+  - "Your memories feel… distant. Like they belong to someone else."
+
+  - text: "Take it easy. You collapsed last night."
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: CONCERNED
+
+  - text: "I was starting to think you wouldn’t wake up."
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: SAD
+

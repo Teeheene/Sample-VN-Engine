@@ -31,7 +31,7 @@ public class NodeDialogue extends Node {
 
         while (!dialogue.isEmpty()) {
             Line line = dialogue.poll();
-            System.out.println("\n" + line.getText());
+            System.out.println(line.getText());
 
             for (CharacterState c : line.getCharacters()) {
                 System.out.println(c.toString());

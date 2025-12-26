@@ -1,0 +1,30 @@
+id: honesty_path
+type: dialogue
+
+lines:
+  - "The words come out before you can stop them."
+
+  - "You don’t remember your past."
+
+  - "Not your name. Not this place."
+
+  - text: "I see…"
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: SAD
+
+  - text: "Thank you for telling me the truth."
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: SOFT
+
+  - "She exhales quietly, as if making a decision."
+
+  - text: "We’ll figure this out together. Okay?"
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: DETERMINED
+

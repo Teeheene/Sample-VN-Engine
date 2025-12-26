@@ -1,0 +1,18 @@
+id: aftermath
+type: dialogue
+
+lines:
+  - "The morning passes quietly."
+
+  - "Alice goes about her routine, but you can sense a subtle tension."
+
+  - text: "Your stomach knots as you think about your choice."
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: NEUTRAL
+
+  - "Stress builds up inside you. Maybe lying wasn’t the best idea."
+
+  - "The day continues, and you realize every choice has consequences."
+

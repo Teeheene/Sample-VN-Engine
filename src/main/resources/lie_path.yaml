@@ -1,0 +1,25 @@
+id: lie_path
+type: dialogue
+next: aftermath
+
+lines:
+  - "You shake your head and force a small smile."
+  
+  - "“I’m fine,” you lie, hoping it sounds convincing."
+  
+  - text: "Alice tilts her head, studying you."
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: CONCERNED
+
+  - "Her expression changes slightly — a hint of doubt, but she doesn’t press further."
+  
+  - text: "She nods slowly."
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: NEUTRAL
+
+  - "You feel a small pang of guilt, but try to push it down."
+

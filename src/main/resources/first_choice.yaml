@@ -1,0 +1,35 @@
+id: first_choice
+type: choice
+
+lines:
+  - "Your chest tightens."
+
+  - "You could tell her the truth."
+
+  - "Or you could lie — maybe it’s safer."
+
+  - "You’re not sure why, but the choice feels important."
+
+  - text: "So… do you remember?"
+    characters:
+      - name: Alice
+        position: LEFT
+        expression: CURIOUS
+
+choices:
+  - text: "Tell her you remember nothing"
+    next: honesty_path
+    effects:
+      flags:
+        - amnesia
+      stats:
+        trust: "+2"
+        honesty: "+1"
+
+  - text: "Lie and say you’re fine"
+    next: lie_path
+    effects:
+      stats:
+        trust: "-1"
+        stress: "+1"
+

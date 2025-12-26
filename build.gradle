@@ -7,10 +7,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.yaml:snakeyaml:2.2'
+    implementation 'org.yaml:snakeyaml:2.0'
 }
 
 application {
-    mainClass = 'Main' 
+    mainClass = 'Main'  // fully qualified class if in a package
 }
 
+tasks.named('run') {
+    standardInput = System.in
+}
