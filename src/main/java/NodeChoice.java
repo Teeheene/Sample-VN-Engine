@@ -38,7 +38,8 @@ public class NodeChoice extends Node {
                 System.out.println(c.toString());
             }
 
-            scanner.nextLine();
+			if(scanner.hasNextLine())
+            	scanner.nextLine();
         }
 		
 		System.out.println("Make a choice: ");

@@ -37,7 +37,8 @@ public class NodeDialogue extends Node {
                 System.out.println(c.toString());
             }
 
-            scanner.nextLine();
+			if(scanner.hasNextLine())
+            	scanner.nextLine();
         }
         engine.goTo(nextNode);
     }

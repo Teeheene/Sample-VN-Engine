@@ -1,0 +1,16 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.yaml:snakeyaml:2.2'
+}
+
+application {
+    mainClass = 'Main' 
+}
+
