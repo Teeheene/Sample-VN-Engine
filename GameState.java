@@ -1,25 +1,28 @@
-import java.util.Map;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 
 public class GameState {
-	private Map<String, Boolean> flags;
+	private Set<String> flags;
 	private Map<String, Integer> stats;
 	
 	public GameState() {
-		this.flags = new HashMap<>();
+		this.flags = new HashSet<>();
         this.stats = new HashMap<>();
 	}
 
 	//flags
-    public void setFlag(String key, boolean value) {
-        flags.put(key, value);
-    }
-    public boolean getFlag(String key) {
-        return flags.getOrDefault(key, false);
+    public void addFlag(String key) {
+		flags.add(key);
     }
     public boolean hasFlag(String key) {
-        return flags.containsKey(key);
+        return flags.contains(key);
     }
+	public void removeFlag(String key) {
+		flags.remove(key);
+	}
 
 	//stats
     public void setStat(String key, int value) {

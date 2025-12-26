@@ -1,14 +1,16 @@
-import java.util.Map;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class Choice {
 	private String text;
 	private String nextNode;
-	private Map<String, Boolean> flags;
+	private Set<String> flags;
 	private Map<String, Integer> stats;
 
 	public Choice() {
-		this.flags = new HashMap<>();
+		this.flags = new HashSet<>();
 		this.stats = new HashMap<>();
 	}
 
@@ -27,8 +29,8 @@ public class Choice {
 	}
 
 	//setters or adders lulz
-	public Choice addFlag(String key, boolean value) {
-        flags.put(key, value);
+	public Choice addFlag(String key) {
+		flags.add(key);
         return this;
     }
 
@@ -44,8 +46,8 @@ public class Choice {
 
 	public void updateGameState(GameState gameState) {
 		// Apply flags
-		for (Map.Entry<String, Boolean> entry : flags.entrySet()) {
-			gameState.setFlag(entry.getKey(), entry.getValue());
+		for(String flag : flags) {
+			gameState.addFlag(flag);
 		}
 
 		// Apply stats

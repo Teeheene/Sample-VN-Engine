@@ -1,7 +1,11 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Queue;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 void main() {
 	VNEngine engine = new VNEngine();
@@ -69,10 +73,11 @@ void main() {
 	));
 
 	List<Choice> choices = new ArrayList<>();
-	choices.add(new Choice("Go to school", "school").addStat("responsibility",'+',2));
+	choices.add(new Choice("Go to school", "school").addStat("responsibility",'+',2).addFlag("listenedToBob"));
 	choices.add(new Choice("Skip school", "skip").addStat("responsibility",'-',2));
 
 	engine.addNode(new NodeChoice("choice", choiceLines, choices));
+
 
 	// --- NODE 4 : SCHOOL ---
 	Queue<Line> schoolLines = new ArrayDeque<>();
@@ -84,19 +89,44 @@ void main() {
 			))
 	));
 
-	engine.addNode(new NodeDialogue("school", schoolLines, "ending"));
+	engine.addNode(new NodeDialogue("school", schoolLines, "conditional"));
+
 
 	// --- NODE 5 : SKIP ---
 	Queue<Line> skipLines = new ArrayDeque<>();
 	skipLines.add(new Line(
 			"You skip school and feel kinda bad.",
 			new ArrayList<>(List.of(
-					new CharacterState("Alice", Position.CENTER, Emotion.SAD),
-					new CharacterState("Bob", Position.RIGHT, Emotion.BLUSHING)
+					new CharacterState("Alice", Position.CENTER, Emotion.SAD)
 			))
 	));
 
-	engine.addNode(new NodeDialogue("skip", skipLines, "ending"));
+	engine.addNode(new NodeDialogue("skip", skipLines, "conditional"));
+
+	// --- NODE 6 : CONDITIONAL ---  
+	Set<String> flags = new HashSet<>();
+	flags.add("listenedToBob");
+	Map<Set<String>, String> flagRoutes = new HashMap<>();
+	flagRoutes.put(flags, "bobroute");
+	NodeConditional conditionalNode = new NodeConditional(
+		"conditional",
+		"ending",   // default if no flags match
+		flagRoutes
+	);
+
+	engine.addNode(conditionalNode);	
+	
+	// --- NODE 7 : BOB ROUTE --- 
+	Queue<Line> bobLines = new ArrayDeque<>();
+	bobLines.add(new Line(
+			"Bob: Hey.. I really appreciate that you listened to me.. ///",
+			new ArrayList<>(List.of(
+					new CharacterState("Bob", Position.CENTER, Emotion.BLUSHING),
+					new CharacterState("Alice", Position.LEFT, Emotion.FLUSTERED)
+			))
+	));
+
+	engine.addNode(new NodeDialogue("bobroute", bobLines, "ending"));
 
 	// --- NODE 6 : ENDING ---
 	Queue<Line> endLines = new ArrayDeque<>();
